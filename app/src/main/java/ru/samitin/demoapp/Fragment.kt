@@ -8,10 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 @Suppress("UNREACHABLE_CODE")
-class Fragment() : Fragment() ,View.OnClickListener  {
+class Fragment() : Fragment()   {
 
    interface OnClickButton{
        fun onClick(id:Int){
@@ -26,22 +27,26 @@ class Fragment() : Fragment() ,View.OnClickListener  {
         val btn3=rootView.findViewById<Button>(R.id.button3)
         val btn4=rootView.findViewById<Button>(R.id.button4)
         val btn5=rootView.findViewById<Button>(R.id.button5)
-        btn1.setOnClickListener(this)
-        btn2.setOnClickListener(this)
-        btn3.setOnClickListener(this)
-        btn4.setOnClickListener(this)
-        btn5.setOnClickListener(this)
+        val click=activity as OnClickButton
+        btn1.setOnClickListener {
+            click.onClick(btn1.id)
+        }
+        btn2.setOnClickListener{
+            click.onClick(btn2.id)
+        }
+        btn3.setOnClickListener{
+            click.onClick(btn2.id)
+        }
+        btn4.setOnClickListener{
+            click.onClick(btn2.id)
+        }
+        btn5.setOnClickListener{
+            click.onClick(btn2.id)
+        }
         return rootView
     }
 
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
-        val intent = Intent(activity, Activity2::class.java)
-        startActivity(intent)
-        /*val click = (activity as OnClickButton).also {
-            it.onClick(v!!.id)
-        }*/
-    }
+
     }
 
 
